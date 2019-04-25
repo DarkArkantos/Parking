@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="438ab9d4-3597-45b0-b6dd-fef16492d80d"
-    Publisher="CN=379753f8-753e-4dbe-aba3-4a01e224bc09"
+    Name="330e1e6b-b6c6-4e47-aa2f-61020272c3fb"
+    Publisher="CN=6c308962-3a1c-4414-a43c-39be8e6c43fe"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>HMIParking.UWP</DisplayName>
-    <PublisherDisplayName>379753f8-753e-4dbe-aba3-4a01e224bc09</PublisherDisplayName>
+    <PublisherDisplayName>6c308962-3a1c-4414-a43c-39be8e6c43fe</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
