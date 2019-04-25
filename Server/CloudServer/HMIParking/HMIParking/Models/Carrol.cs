@@ -4,7 +4,11 @@ using System.Text;
 
 namespace HMIParking.Models
 {
-    class Carrol
+    public class Carrol
     {
+        public int Id { get; set; }
+        public String Placa { get; set; }
+        public DateTime HoraIngreso { get; set; }
+        public DateTime HoraSalida { get; set; }
     }
 }
