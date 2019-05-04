@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HMIParking.iOS", "HMIParkin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HMIParking", "HMIParking\HMIParking\HMIParking.csproj", "{0CBED8CD-63CF-43B0-B79C-B6BEF27E1CFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "NewServer V2\Server.csproj", "{5FF80C95-73E2-4596-886D-6A3A958B5E21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "NewServer V2\Server.csproj", "{5FF80C95-73E2-4596-886D-6A3A958B5E21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

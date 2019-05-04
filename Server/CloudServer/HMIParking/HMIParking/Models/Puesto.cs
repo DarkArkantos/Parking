@@ -7,10 +7,9 @@ namespace HMIParking.Models
     public class Puesto
     {
         public bool State { get; set; }
-        public Carrol Carroactual { get; set; }
+        public Carro Carroactual { get; set; }
         public int Numerocarros { get; set; }
-
-        public List<Carrol> ListaCarros { get; set; }
+        public List<Carro> ListaCarros { get; set; }
 
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using HMIParking.Services;
 namespace HMIParking
 {
     public partial class App : Application
@@ -11,6 +11,7 @@ namespace HMIParking
             InitializeComponent();
 
             MainPage = new MainPage();
+            DependencyService.Register<IData>();
         }
 
         protected override void OnStart()
