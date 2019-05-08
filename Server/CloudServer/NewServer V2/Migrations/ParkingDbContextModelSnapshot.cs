@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NewServer_V2.Models;
 
@@ -14,12 +15,15 @@ namespace NewServer_V2.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("NewServer_V2.Models.Car", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("Input");
 
@@ -29,7 +33,7 @@ namespace NewServer_V2.Migrations
 
                     b.Property<string>("Owner");
 
-                    b.Property<int?>("PlaceId");
+                    b.Property<int>("PlaceId");
 
                     b.HasKey("Id");
 
@@ -41,7 +45,8 @@ namespace NewServer_V2.Migrations
             modelBuilder.Entity("NewServer_V2.Models.Floor", b =>
                 {
                     b.Property<int>("FloorId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("NFloor");
 
@@ -53,9 +58,10 @@ namespace NewServer_V2.Migrations
             modelBuilder.Entity("NewServer_V2.Models.Place", b =>
                 {
                     b.Property<int>("PlaceId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("FloorId");
+                    b.Property<int>("FloorId");
 
                     b.Property<bool>("State");
 
@@ -68,16 +74,18 @@ namespace NewServer_V2.Migrations
 
             modelBuilder.Entity("NewServer_V2.Models.Car", b =>
                 {
-                    b.HasOne("NewServer_V2.Models.Place")
+                    b.HasOne("NewServer_V2.Models.Place", "Place")
                         .WithMany("Records")
-                        .HasForeignKey("PlaceId");
+                        .HasForeignKey("PlaceId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("NewServer_V2.Models.Place", b =>
                 {
                     b.HasOne("NewServer_V2.Models.Floor", "Floor")
                         .WithMany("Places")
-                        .HasForeignKey("FloorId");
+                        .HasForeignKey("FloorId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NewServer_V2.Models;
@@ -9,19 +10,22 @@ using NewServer_V2.Models;
 namespace NewServer_V2.Migrations
 {
     [DbContext(typeof(ParkingDbContext))]
-    [Migration("20190504003009_Update")]
-    partial class Update
+    [Migration("20190508051745_AWS2")]
+    partial class AWS2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("NewServer_V2.Models.Car", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("Input");
 
@@ -43,7 +47,8 @@ namespace NewServer_V2.Migrations
             modelBuilder.Entity("NewServer_V2.Models.Floor", b =>
                 {
                     b.Property<int>("FloorId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("NFloor");
 
@@ -55,7 +60,8 @@ namespace NewServer_V2.Migrations
             modelBuilder.Entity("NewServer_V2.Models.Place", b =>
                 {
                     b.Property<int>("PlaceId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("FloorId");
 
