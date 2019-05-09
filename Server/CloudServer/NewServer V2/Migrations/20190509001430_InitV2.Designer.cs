@@ -10,8 +10,8 @@ using NewServer_V2.Models;
 namespace NewServer_V2.Migrations
 {
     [DbContext(typeof(ParkingDbContext))]
-    [Migration("20190508051745_AWS2")]
-    partial class AWS2
+    [Migration("20190509001430_InitV2")]
+    partial class InitV2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,7 +35,7 @@ namespace NewServer_V2.Migrations
 
                     b.Property<string>("Owner");
 
-                    b.Property<int?>("PlaceId");
+                    b.Property<int>("PlaceId");
 
                     b.HasKey("Id");
 
@@ -44,32 +44,15 @@ namespace NewServer_V2.Migrations
                     b.ToTable("Cars");
                 });
 
-            modelBuilder.Entity("NewServer_V2.Models.Floor", b =>
-                {
-                    b.Property<int>("FloorId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("NFloor");
-
-                    b.HasKey("FloorId");
-
-                    b.ToTable("Floors");
-                });
-
             modelBuilder.Entity("NewServer_V2.Models.Place", b =>
                 {
                     b.Property<int>("PlaceId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("FloorId");
-
                     b.Property<bool>("State");
 
                     b.HasKey("PlaceId");
-
-                    b.HasIndex("FloorId");
 
                     b.ToTable("Places");
                 });
@@ -78,14 +61,8 @@ namespace NewServer_V2.Migrations
                 {
                     b.HasOne("NewServer_V2.Models.Place", "Place")
                         .WithMany("Records")
-                        .HasForeignKey("PlaceId");
-                });
-
-            modelBuilder.Entity("NewServer_V2.Models.Place", b =>
-                {
-                    b.HasOne("NewServer_V2.Models.Floor", "Floor")
-                        .WithMany("Places")
-                        .HasForeignKey("FloorId");
+                        .HasForeignKey("PlaceId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

@@ -42,32 +42,15 @@ namespace NewServer_V2.Migrations
                     b.ToTable("Cars");
                 });
 
-            modelBuilder.Entity("NewServer_V2.Models.Floor", b =>
-                {
-                    b.Property<int>("FloorId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("NFloor");
-
-                    b.HasKey("FloorId");
-
-                    b.ToTable("Floors");
-                });
-
             modelBuilder.Entity("NewServer_V2.Models.Place", b =>
                 {
                     b.Property<int>("PlaceId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("FloorId");
-
                     b.Property<bool>("State");
 
                     b.HasKey("PlaceId");
-
-                    b.HasIndex("FloorId");
 
                     b.ToTable("Places");
                 });
@@ -77,14 +60,6 @@ namespace NewServer_V2.Migrations
                     b.HasOne("NewServer_V2.Models.Place", "Place")
                         .WithMany("Records")
                         .HasForeignKey("PlaceId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("NewServer_V2.Models.Place", b =>
-                {
-                    b.HasOne("NewServer_V2.Models.Floor", "Floor")
-                        .WithMany("Places")
-                        .HasForeignKey("FloorId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

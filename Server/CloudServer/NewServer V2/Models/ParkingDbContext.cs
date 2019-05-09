@@ -14,20 +14,10 @@ namespace NewServer_V2.Models
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Place>().ToTable("Places");
-            builder.Entity<Floor>().ToTable("Floors");
             builder.Entity<Car>().ToTable("Cars");
-
         }
         public DbSet<Place> Places { get; set; }
-        public DbSet<Floor> Floors { get; set; }
         public DbSet<Car> Cars { get; set; }
-    }
-    public class Floor
-    {
-        [Key]
-        public int FloorId { get; set; }
-        public int NFloor { get; set; }
-        public ICollection<Place> Places { get; set; }
     }
     public class Place
     {
@@ -35,9 +25,6 @@ namespace NewServer_V2.Models
         public int PlaceId { get; set; }
         public ICollection<Car> Records { get; set; }
         public bool State { get; set; }
-
-        public Floor Floor { get; set; }
-        public int FloorId { get; set; }
     }
     public class Car
     {
