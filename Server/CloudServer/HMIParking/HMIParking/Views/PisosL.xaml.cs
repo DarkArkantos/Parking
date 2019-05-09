@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace HMIParking.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Login : ContentPage
+    public partial class PisosL : ContentView
     {
-        public Login()
+        public PisosL()
         {
             InitializeComponent();
         }
