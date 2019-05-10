@@ -8,7 +8,7 @@ namespace NewServer_V2.Models
 {
     public class TempDbContext:DbContext
     {
-        public TempDbContext(DbContextOptions options) : base(options)
+        public TempDbContext(DbContextOptions<TempDbContext> options) : base(options)
         {
         }
         public DbSet<Dato> Temp { get; set; }
