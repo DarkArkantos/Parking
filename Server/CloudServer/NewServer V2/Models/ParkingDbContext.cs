@@ -23,6 +23,7 @@ namespace NewServer_V2.Models
     {
         [Key]
         public int PlaceId { get; set; }
+        public int PlaceNumber { get; set; }
         public ICollection<Car> Records { get; set; }
         public bool State { get; set; }
     }
