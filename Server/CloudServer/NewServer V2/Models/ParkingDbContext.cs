@@ -9,20 +9,27 @@ namespace NewServer_V2.Models
 {
     public class ParkingDbContext:DbContext
     {
-        public ParkingDbContext(DbContextOptions options) :base(options){
+
+        /**
+         * Create a new table that connect Places and Cars!!!!!!
+         */
+        public ParkingDbContext(DbContextOptions<ParkingDbContext> options) :base(options){
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Place>().ToTable("Places");
             builder.Entity<Car>().ToTable("Cars");
+            builder.Entity<Connection>().ToTable("Conections");
         }
         public DbSet<Place> Places { get; set; }
         public DbSet<Car> Cars { get; set; }
+        public DbSet<Connection> Conections { get; set; }
     }
     public class Place
     {
         [Key]
         public int PlaceId { get; set; }
+        public int PlaceNumber { get; set; }
         public ICollection<Car> Records { get; set; }
         public bool State { get; set; }
     }
@@ -36,6 +43,13 @@ namespace NewServer_V2.Models
         public DateTime Output { get; set; }
 
         public Place Place { get; set; }
+        public int PlaceId { get; set; }
+    }
+    public class Connection
+    {
+        [Key]
+        public int ConId { get; set; }
+        public int CarId { get; set; }
         public int PlaceId { get; set; }
     }
 }

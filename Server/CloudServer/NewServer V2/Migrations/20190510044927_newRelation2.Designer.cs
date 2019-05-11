@@ -10,8 +10,8 @@ using NewServer_V2.Models;
 namespace NewServer_V2.Migrations
 {
     [DbContext(typeof(ParkingDbContext))]
-    [Migration("20190509001430_InitV2")]
-    partial class InitV2
+    [Migration("20190510044927_newRelation2")]
+    partial class newRelation2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,11 +44,28 @@ namespace NewServer_V2.Migrations
                     b.ToTable("Cars");
                 });
 
+            modelBuilder.Entity("NewServer_V2.Models.Connection", b =>
+                {
+                    b.Property<int>("ConId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CarId");
+
+                    b.Property<int>("PlaceId");
+
+                    b.HasKey("ConId");
+
+                    b.ToTable("Conections");
+                });
+
             modelBuilder.Entity("NewServer_V2.Models.Place", b =>
                 {
                     b.Property<int>("PlaceId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("PlaceNumber");
 
                     b.Property<bool>("State");
 

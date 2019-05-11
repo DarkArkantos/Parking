@@ -29,7 +29,8 @@ namespace NewServer_V2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddDbContext<ParkingDbContext>(options => options.UseSqlServer("Data Source=parkingutadeo.cbm3c4zvoesm.us-east-1.rds.amazonaws.com,1433;Initial Catalog=parkingDB;Persist Security Info=True;User ID=utadeoparking;Password=parkingutadeo123"));
+            services.AddDbContext<ParkingDbContext>( options => options.UseSqlServer("Data Source=parkingutadeo.cbm3c4zvoesm.us-east-1.rds.amazonaws.com,1433;Initial Catalog=parking;Persist Security Info=True;User ID=utadeoparking;Password=parkingutadeo123"));
+            services.AddDbContext<TempDbContext>(options => options.UseInMemoryDatabase("Temp"));
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {

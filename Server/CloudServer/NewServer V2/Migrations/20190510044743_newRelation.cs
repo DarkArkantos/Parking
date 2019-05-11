@@ -4,16 +4,31 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NewServer_V2.Migrations
 {
-    public partial class InitV2 : Migration
+    public partial class newRelation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Conections",
+                columns: table => new
+                {
+                    ConId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CarId = table.Column<int>(nullable: false),
+                    PlaceId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Conections", x => x.ConId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Places",
                 columns: table => new
                 {
                     PlaceId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    PlaceNumber = table.Column<int>(nullable: false),
                     State = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
@@ -54,6 +69,9 @@ namespace NewServer_V2.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Cars");
+
+            migrationBuilder.DropTable(
+                name: "Conections");
 
             migrationBuilder.DropTable(
                 name: "Places");
