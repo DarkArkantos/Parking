@@ -10,6 +10,6 @@ namespace HMIParking.Services
         Task<List<Puesto>> GetPuesto();
         Task<bool> GetPLCData();
         Task PostDataToServer();
-
+       
     }
 }
