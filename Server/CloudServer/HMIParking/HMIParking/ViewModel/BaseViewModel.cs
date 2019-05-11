@@ -4,7 +4,8 @@ using System.Text;
 
 namespace HMIParking.ViewModel
 {
-    class BaseViewModel
+    public class BaseViewModel
     {
+        
     }
 }

@@ -3,6 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HMIParking.App">
     <Application.Resources>
-
+        <x:String x:Key="Titulo">Hola</x:String>
     </Application.Resources>
 </Application>

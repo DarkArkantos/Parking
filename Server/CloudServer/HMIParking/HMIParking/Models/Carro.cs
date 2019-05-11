@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HMIParking.Models
 {
-    public class Carrol
+    public class Carro
     {
         public int Id { get; set; }
         public String Placa { get; set; }
