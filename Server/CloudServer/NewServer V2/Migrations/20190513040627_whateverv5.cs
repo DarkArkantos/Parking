@@ -2,7 +2,7 @@
 
 namespace NewServer_V2.Migrations
 {
-    public partial class newRelation2 : Migration
+    public partial class whateverv5 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -10,8 +10,8 @@ using NewServer_V2.Models;
 namespace NewServer_V2.Migrations
 {
     [DbContext(typeof(ParkingDbContext))]
-    [Migration("20190510044927_newRelation2")]
-    partial class newRelation2
+    [Migration("20190513040627_whateverv5")]
+    partial class whateverv5
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace NewServer_V2.Migrations
 
             modelBuilder.Entity("NewServer_V2.Models.Car", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CarId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -37,33 +37,14 @@ namespace NewServer_V2.Migrations
 
                     b.Property<int>("PlaceId");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("PlaceId");
+                    b.HasKey("CarId");
 
                     b.ToTable("Cars");
                 });
 
-            modelBuilder.Entity("NewServer_V2.Models.Connection", b =>
-                {
-                    b.Property<int>("ConId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CarId");
-
-                    b.Property<int>("PlaceId");
-
-                    b.HasKey("ConId");
-
-                    b.ToTable("Conections");
-                });
-
             modelBuilder.Entity("NewServer_V2.Models.Place", b =>
                 {
-                    b.Property<int>("PlaceId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("PlaceId");
 
                     b.Property<int>("PlaceNumber");
 
@@ -77,9 +58,8 @@ namespace NewServer_V2.Migrations
             modelBuilder.Entity("NewServer_V2.Models.Car", b =>
                 {
                     b.HasOne("NewServer_V2.Models.Place", "Place")
-                        .WithMany("Records")
-                        .HasForeignKey("PlaceId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany("Cars")
+                        .HasForeignKey("PlaceId");
                 });
 #pragma warning restore 612, 618
         }
