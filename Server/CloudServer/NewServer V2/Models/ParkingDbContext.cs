@@ -22,6 +22,13 @@ namespace NewServer_V2.Models
             builder.Entity<Car>().ToTable("Cars").HasOne<Place>(p => p.Place).WithMany(c => c.Cars).HasForeignKey(p => p.PlaceId);
             //builder.Entity<Enrollment>().ToTable("Enrollments");
         }
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            if (!options.IsConfigured)
+            {
+                options.UseSqlServer(@"Server=tcp:parkingutadeoserver.database.windows.net,1433;Initial Catalog=ParkingUtadeoDb2019;Persist Security Info=False;User ID={parkingutadeo};Password={Kirchoff.322/};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            }
+        }
         public DbSet<Place> Places { get; set; }
         public DbSet<Car> Cars { get; set; }
        // public DbSet<Enrollment> Enrollments { get; set; }

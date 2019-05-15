@@ -10,8 +10,8 @@ using NewServer_V2.Models;
 namespace NewServer_V2.Migrations
 {
     [DbContext(typeof(ParkingDbContext))]
-    [Migration("20190513040627_whateverv5")]
-    partial class whateverv5
+    [Migration("20190514004502_InitialAzure")]
+    partial class InitialAzure
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

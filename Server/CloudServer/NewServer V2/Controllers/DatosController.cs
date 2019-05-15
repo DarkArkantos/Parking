@@ -37,9 +37,9 @@ namespace Server.Controllers
 
         // GET: api/Datos
         [HttpGet]
-        public async Task<ActionResult<IQueryable< Place>>> GetTemp()
+        public async Task<IQueryable< Place>> GetTemp()
         {
-            return  _parkingDbContext.Places.ToListAsync() ;
+            return  _parkingDbContext.Places.Include(p=>p.Cars) ;
         }
 
         // GET: api/Datos/5
