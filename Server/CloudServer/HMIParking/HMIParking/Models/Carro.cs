@@ -6,9 +6,10 @@ namespace HMIParking.Models
 {
     public class Carro
     {
-        public int Id { get; set; }
-        public String Placa { get; set; }
-        public DateTime HoraIngreso { get; set; }
-        public DateTime HoraSalida { get; set; }
+        public int CarID { get; set; }
+        public int PlaceID { get; set; }
+        public int FloorID { get; set; }
+        public string Owner { get; set; }
+        public string LicensePlate { get; set; }
     }
 }

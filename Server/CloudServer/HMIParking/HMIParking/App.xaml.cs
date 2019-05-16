@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using HMIParking.Services;
+using HMIParking.Views;
 namespace HMIParking
 {
     public partial class App : Application
@@ -10,7 +11,7 @@ namespace HMIParking
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new ControlPisos();
             DependencyService.Register<IData>();
         }
 

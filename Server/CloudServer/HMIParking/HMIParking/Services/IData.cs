@@ -7,9 +7,9 @@ namespace HMIParking.Services
 {
     public interface IData
     {
-        Task<List<Puesto>> GetPuesto();
-        Task<bool> GetPLCData();
-        Task PostDataToServer();
-
+        Task<List<Piso>> GetFloor(); //Devuelve los pisos del servidor y de los plcs
+        Task<bool> GetPLCData(); //Obtiene los datos del plc
+        Task PostDataToServer(); //Publica los datos del plc al servidor
+        Task<List<Piso>> GetPlaces(); 
     }
 }
