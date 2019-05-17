@@ -82,10 +82,10 @@ namespace ServerLocal.Controllers
 
         // PUT: api/Cars/5
         [HttpPut]
-        public async Task<IActionResult> PutCar(Car car)
+        public async Task<IActionResult> PutCar(Dato car)
         {
-
-            _context.Entry(car).State = EntityState.Modified;
+            var c = new Car { CarID=int.Parse(car.CarID), FloorID=int.Parse(car.FloorID), LicensePlate=car.LicensePlate, Owner=car.Owner, PlaceID=int.Parse(car.PlaceID)};
+            _context.Entry(c).State = EntityState.Modified;
 
             try
             {

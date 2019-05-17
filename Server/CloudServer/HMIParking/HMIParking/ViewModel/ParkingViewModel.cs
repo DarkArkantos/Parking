@@ -10,7 +10,10 @@ namespace HMIParking.ViewModel
 {
     public class ParkingViewModel:BaseViewModel
     {
-        ObservableCollection<Piso> Pisos { get; set; }
+        Piso Piso1 { get; set; }
+        Piso Piso2 { get; set; }
+        Piso Piso3 { get; set; }
+        Piso Piso4 { get; set; }
         public ParkingViewModel()
         {
             Device.StartTimer(TimeSpan.FromMilliseconds(500), () =>
@@ -25,10 +28,10 @@ namespace HMIParking.ViewModel
         public async Task<bool> LoadData()
         {
             var data = await DataStore.GetFloor();
-            foreach (var item in data)
-            {
-                Pisos.Add(item);
-            }
+            Piso1 = data[0];
+            Piso2 = data[1];
+            Piso3 = data[2];
+            Piso4 = data[3];
             return true;
         }
     }
