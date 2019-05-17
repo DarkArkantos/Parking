@@ -24,7 +24,7 @@ namespace HMIParking.Services
         {
             httpClient = new HttpClient();
             PLC = new Plc(CpuType.S71200, "12.51.456.45", 0, 0);
-            Device.StartTimer(TimeSpan.FromMilliseconds(500), () =>
+            Device.StartTimer(TimeSpan.FromSeconds(2), () =>
             {
                 Task.Factory.StartNew(async () =>
                 {
@@ -122,10 +122,6 @@ namespace HMIParking.Services
             c.Owner = "N/A";
             c.CarID = i;
             return c;
-        }
-        public async Task<List<Piso>> GetFloor()
-        {
-            return Pisos;
         }
         public string RandomString(int size, bool lowerCase)
         {

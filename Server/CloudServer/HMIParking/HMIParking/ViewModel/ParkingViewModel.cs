@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using System.Collections.ObjectModel;
@@ -27,7 +28,7 @@ namespace HMIParking.ViewModel
         }
         public async Task<bool> LoadData()
         {
-            var data = await DataStore.GetFloor();
+            var data = await DataStore.GetPlaces();
             Piso1 = data[0];
             Piso2 = data[1];
             Piso3 = data[2];
