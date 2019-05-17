@@ -4,9 +4,9 @@ class Carro
 private:
     String licensePlate;
     String Owner;
-    int CarID;
-    int PlaceID;
-    int FloorID;
+    String  CarID;
+    String  PlaceID;
+    String  FloorID;
     bool State;
 
 public:
@@ -30,16 +30,16 @@ public:
         State = state;
     }
 
-    void SetPlaceID(int placeID)
+    void SetPlaceID(String  placeID)
     {
         PlaceID = placeID;
     }
 
-    int getPlaceID()
+    String  getPlaceID()
     {
         return (PlaceID);
     }
-    int getCarID(){
+    String  getCarID(){
         return(CarID);
     }
     String getOwner(){
@@ -49,14 +49,14 @@ public:
     {
         return (State);
     }
-    int getFloorID(){
+    String  getFloorID(){
         return(FloorID);
     }
     String getLicensePlate(){
         return(licensePlate);
     }
 
-    Carro(String licensePlate, int placeID, int carID, String owner, int floorID, bool state)
+    Carro(String licensePlate, String placeID, String  carID, String owner, String  floorID, bool state)
     {
         licensePlate = licensePlate;
         State = state;
