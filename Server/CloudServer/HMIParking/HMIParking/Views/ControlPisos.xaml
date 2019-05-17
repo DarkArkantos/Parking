@@ -13,7 +13,7 @@
             <syncfusion:SfListView x:Name="Piso1" ItemsSource="{Binding Piso1.Puestos.CarroActual}" Orientation="Horizontal">
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
+                        <Grid AutomationProperties.IsInAccessibleTree="True">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50"/>
                                 <ColumnDefinition Width="100"/>
