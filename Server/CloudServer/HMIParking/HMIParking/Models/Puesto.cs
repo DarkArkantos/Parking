@@ -1,15 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace HMIParking.Models
 {
-    public class Puesto
+    public class Puesto : INotifyPropertyChanged
     {
-        public bool State { get; set; }
-        public Carro Carroactual { get; set; }
-        public int Numerocarros { get; set; }
-        public List<Carro> ListaCarros { get; set; }
+        private bool state;
+        private Carro carroActual;
+        public bool State
+        {
+            get { return state; }
+            set
+            {
+                state = value;
+                OnPropertyChanged("State");
+            }
+        }
+        public Carro Carroactual
+        {
+            get { return carroActual; }
+            set
+            {
+                carroActual = value;
+                OnPropertyChanged("CarroActual");
+            }
+        }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string name)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
     }
 }

@@ -1,14 +1,13 @@
-﻿using HMIParking.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using HMIParking.Services;
+using Xamarin.Forms;
 
 namespace HMIParking.ViewModel
 {
-
     public class BaseViewModel
     {
-        public IData Datos { get; set; }
+        public IData DataStore => DependencyService.Get<IData>() ?? new Data();
     }
 }
-

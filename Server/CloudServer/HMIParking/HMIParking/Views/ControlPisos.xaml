@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:HMIParking.Views"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              x:Class="HMIParking.Views.ControlPisos">
     <ContentPage.Content>
         <StackLayout>
@@ -9,35 +10,28 @@
                 HorizontalOptions="CenterAndExpand" 
                 Margin="20" />
 
-            <CollectionView>
-                <CollectionView.ItemTemplate>
+            <syncfusion:SfListView x:Name="Piso1" ItemsSource="{Binding Piso1.Puestos.CarroActual}" Orientation="Horizontal">
+                <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
                         <Grid AutomationProperties.IsInAccessibleTree="True">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
-                               
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
-
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
                             </Grid.RowDefinitions>
-
                             <Image Source="" Aspect="AspectFit" Grid.Column="0" Grid.RowSpan="5"/>
-                            <Label Text="{Binding Puesto}" Grid.Column="1" Grid.Row="0"/>
-                            <Label Text="{Binding Estado}" Grid.Column="1" Grid.Row="1"/>
-                            <Label Text="{Binding Placa}" Grid.Column="1" Grid.Row="2"/>
-                            <Label Text="{Binding Entrada}" Grid.Column="1" Grid.Row="3"/>
-                            <Label Text="{Binding Tiempo}" Grid.Column="1" Grid.Row="4"/>
+                            <Label Text="{Binding CarID}" Grid.Column="1" Grid.Row="0"/>
+                            <Label Text="{Binding Owner}" Grid.Column="1" Grid.Row="1"/>
+                            <Label Text="{Binding LicensePlate}" Grid.Column="1" Grid.Row="2"/>
                         </Grid>
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+        
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

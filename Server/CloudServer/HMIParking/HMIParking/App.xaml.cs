@@ -2,15 +2,16 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using HMIParking.Services;
+using HMIParking.Views;
 namespace HMIParking
 {
     public partial class App : Application
     {
         public App()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("OTI2NzhAMzEzNzJlMzEyZTMwQWVVRHFlYnlMMnQrbHdvTXpZTEhtVUMwWUFXWkVPNHlxbHJmcEZVS3Njaz0=");
             InitializeComponent();
-
-            MainPage = new MainPage();
+            MainPage = new ControlPisos();
             DependencyService.Register<IData>();
         }
 
