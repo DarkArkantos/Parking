@@ -9,7 +9,7 @@ namespace HMIParking
     {
         public App()
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("OTI2NzhAMzEzNzJlMzEyZTMwQWVVRHFlYnlMMnQrbHdvTXpZTEhtVUMwWUFXWkVPNHlxbHJmcEZVS3Njaz0=");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTAyMTcxQDMxMzcyZTMxMmUzMGpJSG9NSzFQKytVWUt5VjBqT0Jic2pDaGNuaFhiM08rYXd3RzE0V2E3TUE9");
             InitializeComponent();
             MainPage = new ControlPisos();
             DependencyService.Register<IData>();

@@ -18,7 +18,7 @@ namespace HMIParking.Models
                 OnPropertyChanged("State");
             }
         }
-        public Carro Carroactual
+        public Carro CarroActual
         {
             get { return carroActual; }
             set

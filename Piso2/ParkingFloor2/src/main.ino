@@ -4,17 +4,19 @@
 #include <ArduinoJson.h>
 #include <Carro.h>
 
-const char *ssid = "LAB-AUTOMATIZACION";
-const char *password = "sala.ceri";
+const char *ssid = "Acer";
+const char *password = "Acer322466";
 bool state = false;
 int x;
 String url ="https://parkingutadeo2019.azurewebsites.net/api/Cars";
 String send;
 Carro cars[9];
 String header;
-
+HTTPClient http;
 void setup()
 {
+  http.begin(url);
+  http.addHeader("Content-Type", "text/application/json");
   Serial.begin(9600);
   WiFi.begin(ssid, password); 
   Serial.print("Conectando.. ");
@@ -25,16 +27,6 @@ void setup()
   Serial.println("WiFi conectado...");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
-
-  pinMode(0, INPUT);
-  pinMode(1, INPUT);
-  pinMode(2, INPUT);
-  pinMode(3, INPUT);
-  pinMode(4, INPUT);
-  pinMode(5, INPUT);
-  pinMode(6, INPUT);
-  pinMode(7, INPUT);
-  pinMode(8, INPUT);
   cars[0] = Carro("AJK1", "1", "9", "Sutanito", "2", false);
   cars[1] = Carro("AJK1", "2", "10", "Sutanito", "2", false);
   cars[2] = Carro("AJK1", "3", "11", "Sutanito", "2", false);
@@ -46,7 +38,7 @@ void setup()
 }
 void loop()
 {
-  HTTPClient http;
+
   
   for (size_t i = 0; i < 8; i++)
   {
@@ -67,8 +59,7 @@ void loop()
 
   if (WiFi.status() == WL_CONNECTED)
   {
-    http.begin("https://parkingutadeo2019.azurewebsites.net/api/Cars");
-    http.addHeader("Content-Type", "application/json");
+ 
 
     for (size_t i = 0; i < 8; i++)
     {
@@ -80,7 +71,7 @@ void loop()
       doc["owner"]=cars[i].getOwner();
       doc["licensePlate"]=cars[i].getLicensePlate();
       serializeJsonPretty(doc, send);
-      int httpCode = http.sendRequest("PUT", String(send));
+      int httpCode=http.PUT(send);
       String payload = http.getString();
       Serial.println();
       Serial.println(send);
@@ -100,7 +91,7 @@ void loop()
     else
     {
       Serial.print("Error al enviar la solicitud PUT ");
-      Serial.println(httpResponseCode);
+      Serial.println(httpCode);
       Serial.println();
       Serial.println();
     }
